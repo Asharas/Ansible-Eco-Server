@@ -1,0 +1,47 @@
+---
+# Difficulty
+
+eco_difficulty_presets:
+  solo:
+    name: "NoCollaboration"
+    endgame_cost: "Normal"
+    diff_mods:
+      craft_resource_mod: 0.5
+      craft_time_mod: 0.5
+      player_xp_per_spec_xp: 0.0
+      skill_gain_multiplier: 5
+      spec_cost_multiplier: 0.1
+      spec_xp_per_level: 25.0
+
+  low:
+    name: "LowCollaboration"
+    endgame_cost: "Normal"
+    diff_mods:
+      craft_resource_mod: 1
+      craft_time_mod: 1
+      player_xp_per_spec_xp: 0.0
+      skill_gain_multiplier: 2
+      spec_cost_multiplier: 0.5
+      spec_xp_per_level: 25.0
+
+  medium:
+    name: "MediumCollaboration"
+    endgame_cost: "Normal"
+    diff_mods:
+      craft_resource_mod: 1
+      craft_time_mod: 1
+      player_xp_per_spec_xp: 0.0
+      skill_gain_multiplier: 1
+      spec_cost_multiplier: 1
+      spec_xp_per_level: 25.0
+
+  high:
+    name: "HighCollaboration"
+    endgame_cost: "Expensive"
+    diff_mods:
+      craft_resource_mod: 1
+      craft_time_mod: 1
+      player_xp_per_spec_xp: 0.0
+      skill_gain_multiplier: 1
+      spec_cost_multiplier: 2
+      spec_xp_per_level: 25.0

@@ -1,0 +1,22 @@
+[Unit]
+Description=Eco Server
+Wants=network-online.target
+After=multiuser.target syslog.target nss-lookup.target network-online.target
+
+[Service]
+#Type=exec
+User={{ eco_user }}
+Group={{ eco_group }}
+Restart=on-failure
+RestartSec=5
+StartLimitInterval=60s
+TimeoutStartSec=300s
+#PIDFile=/run/eco.pid
+LimitNOFILE=100000
+WorkingDirectory={{ eco_rootdir }}
+ExecStart={{ eco_rootdir }}/EcoServer
+ExecReload=/bin/kill -s TERM $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target

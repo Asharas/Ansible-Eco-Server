@@ -1,0 +1,76 @@
+---
+- name: Template {{ item }}.eco.ansible conf file
+  template:
+    src: "{{ item }}.eco.j2"
+    dest: "{{ eco_rootdir }}/Configs/{{ item }}.eco.ansible"
+    owner: "{{ eco_user }}"
+    group: "{{ eco_group }}"
+    mode: '0644'
+  changed_when: False
+
+- name: Slurp new conf content
+  slurp:
+    src: /opt/eco/Configs/{{ item }}.eco.ansible
+  register: new_conf
+
+- name: Decode new conf content
+  set_fact:
+    new_conf: "{{ new_conf.content | b64decode }}"
+
+- name: Check if {{ item }}.eco exists
+  stat:
+    path: /opt/eco/Configs/{{ item }}.eco
+  register: conf_file
+
+- block:
+  - name: Slurp current conf content
+    slurp:
+      src: /opt/eco/Configs/{{ item }}.eco
+    register: current_conf
+
+  - name: Decode current conf content
+    set_fact:
+      current_conf: "{{ current_conf.content | b64decode }}"
+
+  - name: Merge new conf into current conf
+    set_fact:
+      current_conf: "{{ current_conf | combine(new_conf) }}"
+    register: test
+
+  - name: Write final "{{ item }}" conf to file
+    copy:
+      content: "{{ current_conf | to_nice_json }}"
+      dest: /opt/eco/Configs/{{ item }}.eco
+      owner: "{{ eco_user }}"
+      group: "{{ eco_group }}"
+      mode: '0644'
+  when: conf_file.stat.exists
+
+- block:
+  - name: Slurp default template content
+    slurp:
+      src: /opt/eco/Configs/{{ item }}.eco.template
+    register: template_conf
+
+  - name: Decode default template content
+    set_fact:
+      template_conf: "{{ template_conf.content | b64decode }}"
+
+  - name: Merge new conf into default template conf
+    set_fact:
+      template_conf: "{{ template_conf | combine(new_conf) }}"
+
+  - name: Write final "{{ item }}" conf to file
+    copy:
+      content: "{{ template_conf | to_nice_json }}"
+      dest: /opt/eco/Configs/{{ item }}.eco
+      owner: "{{ eco_user }}"
+      group: "{{ eco_group }}"
+      mode: '0644'
+  when: not conf_file.stat.exists
+
+- name: Cleanup temp file
+  file:
+    path: "{{ eco_rootdir }}/Configs/{{ item }}.eco.ansible"
+    state: absent
+  changed_when: False

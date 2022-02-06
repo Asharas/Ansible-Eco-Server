@@ -1,0 +1,12 @@
+{
+  "CollaborationPreset": "{{ eco_difficulty_presets[eco_difficulty]['name'] }}",
+  "DifficultyModifiers": {
+    "SpecialtyCostMultiplier": {{ eco_difficulty_presets[eco_difficulty]['diff_mods']['spec_cost_multiplier'] }},
+    "SkillGainMultiplier": {{ eco_difficulty_presets[eco_difficulty]['diff_mods']['skill_gain_multiplier'] }},
+    "SpecialtyExperiencePerLevel": {{ eco_difficulty_presets[eco_difficulty]['diff_mods']['spec_xp_per_level'] }},
+    "CraftResourceModifier": {{ eco_difficulty_presets[eco_difficulty]['diff_mods']['craft_resource_mod'] }},
+    "CraftTimeModifier": {{ eco_difficulty_presets[eco_difficulty]['diff_mods']['craft_time_mod'] }},
+    "PlayerExperiencePerSpecialtyExperience": {{ eco_difficulty_presets[eco_difficulty]['diff_mods']['player_xp_per_spec_xp'] }}
+  },
+  "EndgameCraftCost": "{{ eco_difficulty_presets[eco_difficulty]['endgame_cost'] }}"
+}

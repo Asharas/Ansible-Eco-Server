@@ -1,0 +1,123 @@
+---
+eco_subdomain: eco
+eco_domain: example.com
+eco_fqdn: "{{ eco_subdomain }}.{{ eco_domain }}"
+eco_user: eco
+eco_group: "{{ eco_user }}"
+eco_rootdir: /opt/eco
+eco_iptables: true
+eco_revproxy: true
+eco_revproxy_tls: true
+eco_revproxy_tls_crt: "/etc/letsencrypt/live/{{ eco_fqdn }}/fullchain.pem"
+eco_revproxy_tls_key: "/etc/letsencrypt/live/{{ eco_fqdn }}/privkey.pem"
+eco_generate_conf:
+  - Backup
+  - Difficulty
+  - Network
+  - Localization
+  - WorldGenerator
+  - Users
+
+    # - Backup
+    # - Balance
+    # - Civics
+    # - Difficulty
+    # - Disasters
+    # - Features
+    # - Localization
+    # - Network
+    # - Storage
+    # - Users
+    # - WorldGenerator
+
+
+# Language
+eco_language: "English"
+
+# Difficulty
+eco_difficulty: "medium"
+
+# Users
+eco_adminlist: []
+eco_whitelist: []
+eco_blacklist: []
+eco_mutelist: []
+
+
+# Network
+eco_game_port: 3000
+eco_web_port: 3001
+eco_rcon_port: 3002
+eco_rcon_password: ""
+eco_remote_address: "{{ eco_fqdn }}"
+eco_relay: ""
+eco_web_url: "http{% if eco_revproxy_tls %}s{% endif %}://{{ eco_fqdn }}"
+eco_is_public: "false"
+eco_discord: ""
+eco_upnp: "true"
+eco_password: ""
+eco_category: "None"
+eco_playtime: ""
+eco_description: "Eco Server"
+eco_detailed_desc: ""
+eco_rate: 20
+eco_max_connections: -1
+eco_ip_address: "Any"
+
+# Backup
+eco_backup: "false"
+eco_backup_head: "false"
+eco_backup_max_last_hour: 2
+eco_backup_max_hourly: 24
+eco_backup_max_daily: 3
+eco_backup_max_weekly: 10
+eco_backup_frequency: 0.5
+
+# Balance
+eco_max_active_players: 0
+eco_exhaust_hours: 0
+
+# Pause
+eco_paused: "true"
+eco_first_login_unpause: "true"
+
+# Disasters
+eco_meteor: "true"
+eco_meteor_impact_days: 30.0
+
+# Features
+eco_rent: "true"
+eco_food_variety: "true"
+eco_food_tastiness: "true"
+
+# WorldGenerator
+eco_world_x_size: 72
+eco_world_y_size: 72
+eco_world_seed: ""
+
+# Storage
+eco_storage_dir: "Storage"
+eco_storage_save_name: "Game"
+eco_storage_save_frequency: 60
+eco_storage_cleanup_on_exceptions: "false"
+eco_storage_db_queries_use_cache: "true"
+
+# Civics
+eco_overthrow: "true"
+eco_value_addition_overthrow: 50.0
+eco_days_active_demo: 1.5
+eco_hours_to_be_active_demo: 0.5
+eco_days_abandoned_demo: 7.0
+eco_hours_to_be_abandoned_demo: 0.0
+eco_age_for_abandoned_demo: 24.0
+eco_updates_minutes: 5.0
+eco_allow_invalid_container_minutes: 20.0
+eco_recurring_transfer_freq: 30.0
+eco_laws_prevent_login_play: "true"
+eco_basic_election_max_hours: 24.0
+eco_basic_election_voters_min_percent_required: 10.0
+eco_basic_election_min_days_between: 0.0
+eco_basic_election_end_early_voters_percent: 95.0
+eco_basic_election_instant_win_percent: 51.0
+eco_basic_election_instant_lose_percent: 51.0
+eco_basic_election_anonymous_voting: "false"

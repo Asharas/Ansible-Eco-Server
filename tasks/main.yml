@@ -1,0 +1,15 @@
+---
+- import_tasks: install.yml
+
+- import_tasks: service.yml
+  notify: Restart Eco
+
+- import_tasks: config.yml
+  notify: Restart Eco
+
+- import_tasks: iptables.yml
+  when: eco_iptables
+
+- import_tasks: revproxy.yml
+  when: eco_revproxy
+  notify: Reload Nginx

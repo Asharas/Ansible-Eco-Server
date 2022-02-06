@@ -1,0 +1,74 @@
+---
+- name: Add i386 architecture to dpkg
+  lineinfile:
+    line: "{{ item }}"
+    path: /var/lib/dpkg/arch
+    create: yes
+    owner: root
+    group: root
+    mode: '0644'
+  loop:
+    - amd64
+    - i386
+
+- name: Enable contrib and non-free repos
+  replace:
+    path: /etc/apt/sources.list
+    regexp: 'main$'
+    replace: 'main contrib non-free'
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Preseed steamcmd install questions
+  debconf:
+    name: steamcmd
+    question: "{{ item.question }}"
+    vtype: "{{ item.vtype }}"
+    value: "{{ item.value }}"
+  loop:
+    - { question: 'steam/question', vtype: 'select', value: 'I AGREE'}
+    - { question: 'steam/license', vtype: 'note', value: ''}
+    - { question: 'steam/purge', vtype: 'note', value: ''}
+  notify: Restart Eco
+
+- name: Install packages
+  apt:
+    state: present
+    name:
+      - libgdiplus
+      - steamcmd
+      - acl
+  notify: Restart Eco
+
+- name: Add Eco Server user
+  user:
+    name: "{{ eco_user }}"
+    state: present
+    shell: /bin/bash
+    password: '!'
+    update_password: on_create
+    password_lock: yes
+
+- name: Create server directory
+  file:
+    path: "{{ eco_rootdir }}"
+    state: directory
+    recurse: true
+    owner: "{{ eco_user }}"
+    group: "{{ eco_group }}"
+
+- name: Install/Update Steam client
+  command: /usr/games/steamcmd +quit
+  become_user: "{{ eco_user }}"
+  register: steam_install
+  changed_when: "'Update complete, launching' in steam_install.stdout"
+  notify: Restart Eco
+
+- name: Install/Update Eco
+  command: /usr/games/steamcmd +force_install_dir {{ eco_rootdir }} +login anonymous +app_update 739590 default validate +quit
+  become_user: "{{ eco_user }}"
+  register: eco_install
+  changed_when: "'Update state (0x61) downloading' in eco_install.stdout"
+  notify: Restart Eco

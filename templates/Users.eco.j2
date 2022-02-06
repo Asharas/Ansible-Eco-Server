@@ -1,0 +1,36 @@
+{
+  "UserPermission": {
+    "WhiteList": {
+      "Collection": {
+        "System.String": {
+          "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+          "$values": {{ eco_whitelist }}
+        }
+      }
+    },
+    "BlackList": {
+      "Collection": {
+        "Eco.Gameplay.Players.TimeUser": {
+          "$type": "System.Collections.Generic.List`1[[Eco.Gameplay.Players.TimeUser, Eco.Gameplay]], System.Private.CoreLib",
+          "$values": {{ eco_blacklist }}
+        }
+      }
+    },
+    "MuteList": {
+      "Collection": {
+        "Eco.Gameplay.Players.TimeUser": {
+          "$type": "System.Collections.Generic.List`1[[Eco.Gameplay.Players.TimeUser, Eco.Gameplay]], System.Private.CoreLib",
+          "$values": {{ eco_mutelist }}
+        }
+      }
+    },
+    "Admins": {
+      "Collection": {
+        "System.String": {
+          "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+          "$values": {{ eco_adminlist }}
+        }
+      }
+    }
+  }
+}

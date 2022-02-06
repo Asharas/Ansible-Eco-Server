@@ -1,0 +1,10 @@
+---
+- name: Restart Eco
+  service:
+    name: eco.service
+    state: restarted
+
+- name: Reload Nginx
+  service:
+    name: nginx.service
+    state: reloaded

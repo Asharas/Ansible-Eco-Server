@@ -1,0 +1,10 @@
+{
+  "Dimensions": {
+    "x": {{ eco_world_x_size }},
+    "y": {{ eco_world_y_size }}
+  }
+  {% if eco_world_seed != '' %}
+  ,
+  "Seed": {{ eco_worldgen.seed }}
+  {% endif %}
+}

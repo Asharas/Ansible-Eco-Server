@@ -1,0 +1,24 @@
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Create nginx conf for Eco
+  template:
+    src: nginx.eco.conf.j2
+    dest: /etc/nginx/sites-available/eco.conf
+    mode: '0644'
+
+- name: Disable the default site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Enable Eco conf
+  file:
+    path: /etc/nginx/sites-enabled/eco.conf
+    src: /etc/nginx/sites-available/eco.conf
+    state: link
+    owner: root
+    group: root

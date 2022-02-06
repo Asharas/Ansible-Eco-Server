@@ -1,0 +1,63 @@
+---
+- name: Accept Established and Related connexions
+  iptables:
+    state: present
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+
+- name: Accept all traffic on loopback
+  iptables:
+    state: present
+    chain: INPUT
+    in_interface: lo
+    jump: ACCEPT
+
+- name: Allow SSH
+  iptables:
+    state: present
+    chain: INPUT
+    protocol: tcp
+    destination_port: 22
+    jump: ACCEPT
+
+- name: Nginx iptables rules
+  iptables:
+    state: present
+    chain: INPUT
+    protocol: tcp
+    destination_port: "{{ item }}"
+    jump: ACCEPT
+  loop:
+    - 80
+    - 443
+  when: eco_revproxy
+
+- name: Eco web iptables rule
+  iptables:
+    state: present
+    chain: INPUT
+    protocol: tcp
+    destination_port: 3001
+    jump: ACCEPT
+  when: not eco_revproxy
+
+- name: Eco gameserver iptables rules
+  iptables:
+    state: present
+    chain: INPUT
+    protocol: "{{ item }}"
+    destination_ports: 3000
+    jump: ACCEPT
+  loop:
+    - tcp
+    - udp
+
+- name: Set INPUT and FORWARD chain policy
+  iptables:
+    state: present
+    chain: "{{ item }}"
+    policy: DROP
+  loop:
+    - INPUT
+    - FORWARD
