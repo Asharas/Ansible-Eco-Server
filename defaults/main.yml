@@ -7,7 +7,7 @@ eco_group: "{{ eco_user }}"
 eco_rootdir: /opt/eco
 eco_iptables: true
 eco_revproxy: true
-eco_revproxy_tls: true
+eco_revproxy_tls: false
 eco_revproxy_tls_crt: "/etc/letsencrypt/live/{{ eco_fqdn }}/fullchain.pem"
 eco_revproxy_tls_key: "/etc/letsencrypt/live/{{ eco_fqdn }}/privkey.pem"
 eco_generate_conf:
@@ -121,3 +121,95 @@ eco_basic_election_end_early_voters_percent: 95.0
 eco_basic_election_instant_win_percent: 51.0
 eco_basic_election_instant_lose_percent: 51.0
 eco_basic_election_anonymous_voting: "false"
+
+# DiscordLink
+eco_dislink_enable: false
+eco_dislink_bot_name: "DiscordLink"
+eco_dislink_bot_token: ""
+eco_dislink_cmd_prefix: "?"
+eco_dislink_admin_roles:
+  - admin
+  - administrator
+  - moderator
+eco_dislink_server_name: "{{ eco_description }}"
+eco_dislink_server_desc: "{{ eco_detailed_desc }}"
+eco_dislink_server_logo: "https://github.com/Eco-DiscordLink/EcoDiscordPlugin/blob/develop/images/DiscordLinkLogo_Nameless.png"
+eco_dislink_server_address: "{{ eco_remote_address }}"
+eco_dislink_guild: ""
+eco_dislink_max_tracked: "5"
+eco_dislink_loglevel: "Information"
+eco_dislink_backend_loglevel: "Error"
+eco_dislink_log_chat: "false"
+eco_dislink_chatlog_path: "{{ eco_rootdir }}/Logs/DiscordLink/Chat.log"
+eco_dislink_cmd_output_channel: "General"
+eco_dislink_invite_msg: 'Join us on Discord!\n[LINK]'
+
+eco_dislink_chat:
+  - AllowUserMentions: true
+    AllowRoleMentions: true
+    AllowChannelMentions: true
+    Direction: Duplex
+    HereAndEveryoneMentionPermission: Forbidden
+    DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: general
+    EcoChannel: General
+
+eco_dislink_currency:
+  - UseMintedCurrency: "MintedExists"
+    UsePersonalCurrency: "NoMintedExists"
+    MaxMintedCount: 1
+    MaxPersonalCount: 3
+    MaxTopCurrencyHolderCount: 6
+    UseTradeCount: true
+    UseBackingInfo: false
+    DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: "currency"
+
+eco_dislink_server_info:
+  - UseName: true
+    UseDescription: false
+    UseLogo: true
+    UseConnectionInfo: true
+    UsePlayerCount: true
+    UsePlayerList: true
+    UsePlayerListLoggedInTime: true
+    UseCurrentTime: true
+    UseTimeRemaining: true
+    UseMeteorHasHit: false
+    UseElectionCount: false
+    UseElectionList: true
+    UseLawCount: false
+    UseLawList: true
+    DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: "server-status"
+
+eco_dislink_players:
+  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: "trades"
+    UsePlayerCount: true
+    UseLoggedInTime: false
+
+eco_dislink_elections:
+  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: "elections"
+
+eco_dislink_workparty:
+  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: "work-parties"
+
+
+eco_dislink_trades:
+  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: "trades"
+
+eco_dislink_craft:
+  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: "crafting"
+
+eco_dislink_snippet:
+  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: "snippets"
+
+eco_dislink_command:
+  - DiscordGuild: ""
+    DiscordChannel: ""

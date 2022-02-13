@@ -1,0 +1,3 @@
+---
+- import_tasks: mods_discordlink.yml
+  when: eco_dislink_enable

@@ -1,0 +1,29 @@
+---
+- name: Download DiscordLink {{ eco_dislink_version }}
+  get_url:
+    url: "{{ eco_dislink_dl_url }}"
+    dest: "{{ eco_rootdir }}/{{ eco_dislink_archive_name }}"
+  changed_when: false
+
+- name: Unzip DiscordLink
+  unarchive:
+    src: "{{ eco_rootdir }}/{{ eco_dislink_archive_name }}"
+    remote_src: yes
+    dest: "{{ eco_rootdir }}"
+    owner: "{{ eco_user }}"
+    group: "{{ eco_group }}"
+  changed_when: false
+
+- name: Remove DiscordLink archive
+  file:
+    path: "{{ eco_rootdir }}/{{ eco_dislink_archive_name }}"
+    state: absent
+  changed_when: false
+
+- name: Template Discord Link configuration
+  template:
+    src: DiscordLink.eco.j2
+    dest: "{{ eco_rootdir }}/Configs/DiscordLink.eco"
+    owner: "{{ eco_user }}"
+    group: "{{ eco_group }}"
+    mode: 0640

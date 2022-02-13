@@ -7,6 +7,9 @@
 - import_tasks: config.yml
   notify: Restart Eco
 
+- import_tasks: mods.yml
+  notify: Restart Eco
+
 - import_tasks: iptables.yml
   when: eco_iptables
 
