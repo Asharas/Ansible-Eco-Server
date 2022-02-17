@@ -1,4 +1,9 @@
 ---
+- name: Install required packages
+  apt:
+    name: iptables
+    state: present
+
 - name: Accept Established and Related connexions
   iptables:
     state: present

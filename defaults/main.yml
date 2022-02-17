@@ -124,8 +124,8 @@ eco_basic_election_anonymous_voting: "false"
 
 # DiscordLink
 eco_dislink_enable: false
-eco_dislink_bot_name: "DiscordLink"
 eco_dislink_bot_token: ""
+eco_dislink_bot_name: "DiscordLink"
 eco_dislink_cmd_prefix: "?"
 eco_dislink_admin_roles:
   - admin
@@ -141,7 +141,7 @@ eco_dislink_loglevel: "Information"
 eco_dislink_backend_loglevel: "Error"
 eco_dislink_log_chat: "false"
 eco_dislink_chatlog_path: "{{ eco_rootdir }}/Logs/DiscordLink/Chat.log"
-eco_dislink_cmd_output_channel: "General"
+eco_dislink_cmd_output_chan: "General"
 eco_dislink_invite_msg: 'Join us on Discord!\n[LINK]'
 
 eco_dislink_chat:
@@ -197,19 +197,18 @@ eco_dislink_workparty:
   - DiscordGuild: "{{ eco_dislink_guild }}"
     DiscordChannel: "work-parties"
 
-
 eco_dislink_trades:
   - DiscordGuild: "{{ eco_dislink_guild }}"
     DiscordChannel: "trades"
 
 eco_dislink_craft:
-  - DiscordGuild: "{{ eco_dislink_guild }}"
-    DiscordChannel: "crafting"
+  - DiscordGuild: ""
+    DiscordChannel: ""
 
 eco_dislink_snippet:
   - DiscordGuild: "{{ eco_dislink_guild }}"
     DiscordChannel: "snippets"
 
 eco_dislink_command:
-  - DiscordGuild: ""
-    DiscordChannel: ""
+  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordChannel: "commands"
