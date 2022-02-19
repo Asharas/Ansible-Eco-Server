@@ -145,7 +145,7 @@ eco_dislink_cmd_output_chan: "General"
 eco_dislink_invite_msg: 'Join us on Discord!\n[LINK]'
 
 eco_dislink_chat:
-  - AllowUserMentions: true
+    AllowUserMentions: true
     AllowRoleMentions: true
     AllowChannelMentions: true
     Direction: Duplex
@@ -155,7 +155,7 @@ eco_dislink_chat:
     EcoChannel: General
 
 eco_dislink_currency:
-  - UseMintedCurrency: "MintedExists"
+    UseMintedCurrency: "MintedExists"
     UsePersonalCurrency: "NoMintedExists"
     MaxMintedCount: 1
     MaxPersonalCount: 3
@@ -166,7 +166,7 @@ eco_dislink_currency:
     DiscordChannel: "currency"
 
 eco_dislink_server_info:
-  - UseName: true
+    UseName: true
     UseDescription: false
     UseLogo: true
     UseConnectionInfo: true
@@ -184,31 +184,31 @@ eco_dislink_server_info:
     DiscordChannel: "server-status"
 
 eco_dislink_players:
-  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordGuild: "{{ eco_dislink_guild }}"
     DiscordChannel: "trades"
     UsePlayerCount: true
     UseLoggedInTime: false
 
 eco_dislink_elections:
-  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordGuild: "{{ eco_dislink_guild }}"
     DiscordChannel: "elections"
 
 eco_dislink_workparty:
-  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordGuild: "{{ eco_dislink_guild }}"
     DiscordChannel: "work-parties"
 
 eco_dislink_trades:
-  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordGuild: "{{ eco_dislink_guild }}"
     DiscordChannel: "trades"
 
 eco_dislink_craft:
-  - DiscordGuild: ""
+    DiscordGuild: ""
     DiscordChannel: ""
 
 eco_dislink_snippet:
-  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordGuild: "{{ eco_dislink_guild }}"
     DiscordChannel: "snippets"
 
 eco_dislink_command:
-  - DiscordGuild: "{{ eco_dislink_guild }}"
+    DiscordGuild: "{{ eco_dislink_guild }}"
     DiscordChannel: "commands"
