@@ -142,7 +142,7 @@ eco_dislink_chat:
     Direction: Duplex
     HereAndEveryoneMentionPermission: Forbidden
     DiscordGuild: "{{ eco_dislink_guild }}"
-    DiscordChannel: general
+    DiscordChannel: "general"
     EcoChannel: General
 
 eco_dislink_currency:
