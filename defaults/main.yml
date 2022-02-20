@@ -12,24 +12,16 @@ eco_revproxy_tls_crt: "/etc/letsencrypt/live/{{ eco_fqdn }}/fullchain.pem"
 eco_revproxy_tls_key: "/etc/letsencrypt/live/{{ eco_fqdn }}/privkey.pem"
 eco_generate_conf:
   - Backup
+  - Balance
+  - Civics
   - Difficulty
-  - Network
+  - Disasters
+  - Features
   - Localization
-  - WorldGenerator
+  - Network
+  - Storage
   - Users
-
-    # - Backup
-    # - Balance
-    # - Civics
-    # - Difficulty
-    # - Disasters
-    # - Features
-    # - Localization
-    # - Network
-    # - Storage
-    # - Users
-    # - WorldGenerator
-
+  - WorldGenerator
 
 # Language
 eco_language: "English"
@@ -42,7 +34,6 @@ eco_adminlist: []
 eco_whitelist: []
 eco_blacklist: []
 eco_mutelist: []
-
 
 # Network
 eco_game_port: 3000
@@ -65,8 +56,8 @@ eco_max_connections: -1
 eco_ip_address: "Any"
 
 # Backup
-eco_backup: "false"
-eco_backup_head: "false"
+eco_backup: "true"
+eco_backup_head: "true"
 eco_backup_max_last_hour: 2
 eco_backup_max_hourly: 24
 eco_backup_max_daily: 3
