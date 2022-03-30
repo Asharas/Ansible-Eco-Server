@@ -2,7 +2,7 @@
 - name: Create eco.service file
   template:
     src: eco.service.j2
-    dest: /usr/lib/systemd/system/eco.service
+    dest: /lib/systemd/system/eco.service
     mode: '0644'
 
 - name: Enable eco.service and reload daemon
