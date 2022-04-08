@@ -51,3 +51,7 @@ eco_dislink_version: "2.2.3"
 eco_dislink_archive_name: "DiscordLink.zip"
 eco_dislink_dl_url: "https://github.com/Eco-DiscordLink/EcoDiscordPlugin/releases/download/{{ eco_dislink_version}}/{{ eco_dislink_archive_name }}"
 # eco_dislink_dl_url: "https://mod.io/mods/file/1458986"
+
+# Cost Calculator
+eco_costcalc_archive_name: "CostCalc.zip"
+eco_costcalc_dl_url: "https://mod.io/mods/file/2206747"

@@ -6,3 +6,6 @@
 
 - import_tasks: mods_discordlink.yml
   when: eco_dislink_enable
+
+- import_tasks: mods_costcalc.yml
+  when: eco_costcalc_enable | bool
