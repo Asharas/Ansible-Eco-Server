@@ -11,8 +11,8 @@
   notify: Restart Eco
 
 - import_tasks: iptables.yml
-  when: eco_iptables
+  when: eco_iptables | bool
 
 - import_tasks: revproxy.yml
-  when: eco_revproxy
+  when: eco_revproxy | bool
   notify: Reload Nginx

@@ -2,12 +2,12 @@
 - name: Download DiscordLink {{ eco_dislink_version }}
   get_url:
     url: "{{ eco_dislink_dl_url }}"
-    dest: "{{ eco_rootdir }}/{{ eco_dislink_archive_name }}"
+    dest: "/tmp/{{ eco_dislink_archive_name }}"
   changed_when: false
 
 - name: Unzip DiscordLink
   unarchive:
-    src: "{{ eco_rootdir }}/{{ eco_dislink_archive_name }}"
+    src: "/tmp/{{ eco_dislink_archive_name }}"
     remote_src: yes
     dest: "{{ eco_rootdir }}"
     owner: "{{ eco_user }}"
@@ -16,7 +16,7 @@
 
 - name: Remove DiscordLink archive
   file:
-    path: "{{ eco_rootdir }}/{{ eco_dislink_archive_name }}"
+    path: "/tmp/{{ eco_dislink_archive_name }}"
     state: absent
   changed_when: false
 
