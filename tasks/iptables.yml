@@ -36,7 +36,7 @@
   loop:
     - 80
     - 443
-  when: eco_revproxy | bool
+  when: eco_revproxy is defined and (eco_revproxy | bool)
 
 - name: Eco web iptables rule
   iptables:
@@ -45,7 +45,7 @@
     protocol: tcp
     destination_port: 3001
     jump: ACCEPT
-  when: not eco_revproxy | bool
+  when: eco_revproxy is undefined or not (eco_revproxy | bool)
 
 - name: Eco gameserver iptables rules
   iptables:
