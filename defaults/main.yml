@@ -113,6 +113,9 @@ eco_basic_election_instant_win_percent: 51.0
 eco_basic_election_instant_lose_percent: 51.0
 eco_basic_election_anonymous_voting: "false"
 
+# CostCalculator
+eco_costcalc_enable: false
+
 # DiscordLink
 eco_dislink_enable: false
 eco_dislink_bot_token: ""
