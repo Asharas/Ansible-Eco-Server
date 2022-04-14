@@ -43,7 +43,7 @@
     state: present
     chain: INPUT
     protocol: tcp
-    destination_port: 3001
+    destination_port: "{{ eco_web_port }}"
     jump: ACCEPT
   when: eco_revproxy is undefined or not (eco_revproxy | bool)
 
@@ -52,7 +52,7 @@
     state: present
     chain: INPUT
     protocol: "{{ item }}"
-    destination_ports: 3000
+    destination_ports: "{{ eco_game_port }}"
     jump: ACCEPT
   loop:
     - tcp
