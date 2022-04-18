@@ -1,6 +1,7 @@
 ---
 # DiscordLink
 eco_dislink_bot_token: ""
+eco_dislink_guild: ""
 eco_dislink_bot_name: "DiscordLink"
 eco_dislink_cmd_prefix: "?"
 eco_dislink_admin_roles:
@@ -11,7 +12,6 @@ eco_dislink_server_name: "{{ eco_description }}"
 eco_dislink_server_desc: "{{ eco_detailed_desc }}"
 eco_dislink_server_logo: "https://raw.githubusercontent.com/Eco-DiscordLink/EcoDiscordPlugin/develop/images/DiscordLinkLogo_Nameless.png"
 eco_dislink_server_address: "{{ eco_remote_address }}"
-eco_dislink_guild: ""
 eco_dislink_max_tracked: "5"
 eco_dislink_loglevel: "Information"
 eco_dislink_backend_loglevel: "Error"
