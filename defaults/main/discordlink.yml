@@ -1,6 +1,5 @@
-
+---
 # DiscordLink
-eco_dislink_enable: false
 eco_dislink_bot_token: ""
 eco_dislink_bot_name: "DiscordLink"
 eco_dislink_cmd_prefix: "?"
