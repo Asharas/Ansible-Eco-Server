@@ -19,22 +19,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		app.vm.network :private_network, ip: "192.168.56.31"
   end
 
-	# Ajout la clé publique de l'utilisateur courant dans la VM comme root
+		# Add $HOME/.ssh/id.pub to root and vagrant users
 
 		vagrant_root = File.dirname(__FILE__)
-	  ssh_pub_key = File.readlines("#{vagrant_root}/terraform/id.pub").first.strip
+		ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id.pub").first.strip
 	  config.vm.provision 'shell', inline: 'mkdir -p /root/.ssh'
 	  config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /root/.ssh/authorized_keys"
 	  config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys", privileged: false
 
-		# config.vm.cloud_init :user_data do |cloud_init|
-		# 	cloud_init.content_type = "text/cloud-config"
-		# 	cloud_init.path = "terraform/cloud-config.yml"
-		# end
-
 		config.vm.provision "ansible" do |ansible|
-			ansible.raw_arguments  = ["--skip-tags=certbot,dns,ssh,backup"]
-			ansible.playbook = "#{vagrant_root}/ansible/main.yml"
+			ansible.playbook = "#{vagrant_root}/test.yml"
 		end
 
 end

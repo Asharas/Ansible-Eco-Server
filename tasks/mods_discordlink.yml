@@ -1,7 +1,7 @@
 ---
-- name: Download DiscordLink {{ eco_dislink_version }}
+- name: Download DiscordLink {{ eco_dislink_version }}
   get_url:
-    url: "{{ eco_dislink_dl_url }}"
+    url: "{{ eco_dislink_dl_url }}"
     dest: "/tmp/{{ eco_dislink_archive_name }}"
   changed_when: false
 

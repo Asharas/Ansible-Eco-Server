@@ -58,6 +58,7 @@
     recurse: true
     owner: "{{ eco_user }}"
     group: "{{ eco_group }}"
+    mode: 0750
 
 - name: Install/Update Steam client
   command: /usr/games/steamcmd +quit
@@ -67,7 +68,7 @@
   notify: Restart Eco
 
 - name: Install/Update Eco
-  command: /usr/games/steamcmd +force_install_dir {{ eco_rootdir }} +login anonymous +app_update 739590 default validate +quit
+  command: /usr/games/steamcmd +force_install_dir {{ eco_rootdir }} +login anonymous +app_update 739590 default validate +quit
   become_user: "{{ eco_user }}"
   register: eco_install
   changed_when: "'Update state (0x61) downloading' in eco_install.stdout"
