@@ -4,6 +4,10 @@ eco_language: "English"
 
 # Difficulty
 eco_difficulty: "medium"
+eco_difficulty_stacksize_mod: 1.0
+eco_difficulty_weight_mod: 1.0
+eco_difficulty_fuel_mod: 1.0
+eco_difficulty_conrange_mod: 1.0
 
 # Users
 eco_adminlist: []
