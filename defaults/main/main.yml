@@ -22,9 +22,3 @@ eco_generate_conf:
   - Storage
   - Users
   - WorldGenerator
-
-# Discord Link
-eco_dislink_enable: false
-
-# CostCalculator
-eco_costcalc_enable: false
