@@ -58,7 +58,6 @@
     recurse: true
     owner: "{{ eco_user }}"
     group: "{{ eco_group }}"
-    mode: 0750
 
 - name: Install/Update Steam client
   command: /usr/games/steamcmd +quit

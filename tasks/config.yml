@@ -5,7 +5,6 @@
     state: directory
     owner: "{{ eco_user }}"
     group: "{{ eco_group }}"
-    mode: '0755'
 
 - name: Check if Pause conf exists
   stat:
