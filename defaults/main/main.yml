@@ -5,8 +5,8 @@ eco_fqdn: "{{ eco_subdomain }}.{{ eco_domain }}"
 eco_user: eco
 eco_group: "{{ eco_user }}"
 eco_rootdir: /opt/eco
-eco_iptables: true
-eco_revproxy: true
+eco_iptables: false
+eco_revproxy: false
 eco_revproxy_tls: false
 eco_revproxy_tls_crt: "/etc/letsencrypt/live/{{ eco_fqdn }}/fullchain.pem"
 eco_revproxy_tls_key: "/etc/letsencrypt/live/{{ eco_fqdn }}/privkey.pem"
