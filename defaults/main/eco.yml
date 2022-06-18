@@ -22,7 +22,7 @@ eco_rcon_port: 3002
 eco_rcon_password: ""
 eco_remote_address: "{{ eco_fqdn }}"
 eco_relay: ""
-eco_web_url: "http{% if eco_revproxy_tls %}s{% endif %}://{{ eco_fqdn }}"
+eco_web_url: "{% if eco_fqdn != '' %}{{ 'https' if eco_revproxy_tls else 'http' }}://{{ eco_fqdn }}{% endif %}"
 eco_is_public: "false"
 eco_discord: ""
 eco_upnp: "true"
@@ -30,7 +30,7 @@ eco_password: ""
 eco_category: "None"
 eco_playtime: ""
 eco_description: "Eco Server"
-eco_detailed_desc: ""
+eco_detailed_desc: "Ansible managed Eco server"
 eco_rate: 20
 eco_max_connections: -1
 eco_ip_address: "Any"

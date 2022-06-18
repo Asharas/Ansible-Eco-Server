@@ -1,7 +1,5 @@
 ---
-eco_subdomain: eco
-eco_domain: example.com
-eco_fqdn: "{{ eco_subdomain }}.{{ eco_domain }}"
+eco_fqdn: ""
 eco_user: eco
 eco_group: "{{ eco_user }}"
 eco_rootdir: /opt/eco

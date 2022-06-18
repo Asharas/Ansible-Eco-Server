@@ -4,11 +4,12 @@
     name: nginx
     state: present
 
-- name: Create nginx conf for Eco
+- name: Template nginx conf for Eco
   template:
     src: nginx.eco.conf.j2
     dest: /etc/nginx/sites-available/eco.conf
     mode: '0644'
+    lstrip_blocks: yes
 
 - name: Disable the default site
   file:
