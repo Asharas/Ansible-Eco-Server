@@ -10,7 +10,7 @@
 
 - name: Slurp new conf content
   slurp:
-    src: /opt/eco/Configs/{{ item }}.eco.ansible
+    src: "{{ eco_rootdir }}/Configs/{{ item }}.eco.ansible"
   register: new_conf
 
 - name: Decode new conf content
@@ -19,13 +19,13 @@
 
 - name: Check if {{ item }}.eco exists
   stat:
-    path: /opt/eco/Configs/{{ item }}.eco
+    path: "{{ eco_rootdir }}/Configs/{{ item }}.eco"
   register: conf_file
 
 - block:
   - name: Slurp current conf content
     slurp:
-      src: /opt/eco/Configs/{{ item }}.eco
+      src: "{{ eco_rootdir }}/Configs/{{ item }}.eco"
     register: current_conf
 
   - name: Decode current conf content
@@ -40,7 +40,7 @@
   - name: Write final "{{ item }}" conf to file
     copy:
       content: "{{ current_conf | to_nice_json }}"
-      dest: /opt/eco/Configs/{{ item }}.eco
+      dest: "{{ eco_rootdir }}/Configs/{{ item }}.eco"
       owner: "{{ eco_user }}"
       group: "{{ eco_group }}"
       mode: '0644'
@@ -49,7 +49,7 @@
 - block:
   - name: Slurp default template content
     slurp:
-      src: /opt/eco/Configs/{{ item }}.eco.template
+      src: "{{ eco_rootdir }}/Configs/{{ item }}.eco.template"
     register: template_conf
 
   - name: Decode default template content
@@ -63,7 +63,7 @@
   - name: Write final "{{ item }}" conf to file
     copy:
       content: "{{ template_conf | to_nice_json }}"
-      dest: /opt/eco/Configs/{{ item }}.eco
+      dest: "{{ eco_rootdir }}/Configs/{{ item }}.eco"
       owner: "{{ eco_user }}"
       group: "{{ eco_group }}"
       mode: '0644'
