@@ -114,3 +114,14 @@ eco_time_to_max_timerate: 20.0
 eco_empty_blocks_count_as_windows: "true"
 eco_room_cat_diminishing_return_rate: 0.5
 eco_wall_blocks_per_window: 10
+
+# Stats
+eco_enable_stat_writes: "true"
+eco_enable_stat_reads: "true"
+eco_enable_pending_writes_on_backup: "true"
+eco_write_timeout_ms: 1000
+eco_read_timeout_ms: 1000
+eco_max_records_group: 500000
+eco_keep_details_hours: 3
+eco_rebuild_db_on_exit: "true"
+eco_grouping_level: "GroupByEssentialFields"
