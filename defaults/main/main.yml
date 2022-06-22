@@ -21,3 +21,4 @@ eco_generate_conf:
   - WorldGenerator
   - WorldObjects
   - Sleep
+  - Rooms

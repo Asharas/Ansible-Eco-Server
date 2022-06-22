@@ -109,3 +109,8 @@ eco_parralel_objects_ticks: "false"
 eco_allow_ff: "false"
 eco_sleep_timepass_mult: 500.0
 eco_time_to_max_timerate: 20.0
+
+# Rooms
+eco_empty_blocks_count_as_windows: "true"
+eco_room_cat_diminishing_return_rate: 0.5
+eco_wall_blocks_per_window: 10
