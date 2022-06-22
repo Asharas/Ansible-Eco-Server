@@ -104,3 +104,8 @@ eco_basic_election_anonymous_voting: "false"
 # WorldObjects
 eco_target_tick_delta_ms: 0
 eco_parralel_objects_ticks: "false"
+
+# Sleep
+eco_allow_ff: "false"
+eco_sleep_timepass_mult: 500.0
+eco_time_to_max_timerate: 20.0

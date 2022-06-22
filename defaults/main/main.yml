@@ -20,3 +20,4 @@ eco_generate_conf:
   - Users
   - WorldGenerator
   - WorldObjects
+  - Sleep
