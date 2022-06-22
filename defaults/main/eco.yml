@@ -34,6 +34,8 @@ eco_detailed_desc: "Ansible managed Eco server"
 eco_rate: 20
 eco_max_connections: -1
 eco_ip_address: "Any"
+eco_server_id: ""
+eco_server_passport: ""
 
 # Backup
 eco_backup: "true"

@@ -16,7 +16,6 @@ eco_generate_conf:
   - Disasters
   - Features
   - Localization
-  - Network
   - Storage
   - Users
   - WorldGenerator

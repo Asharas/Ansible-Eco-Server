@@ -3,9 +3,17 @@
   "DetailedDescription": "{{ eco_detailed_desc }}",
   "PublicServer": {{ eco_is_public }},
   "Playtime": "{{ eco_playtime | join('') }}",
+  {% if eco_discord != "" %}
   "DiscordAddress": "{{ eco_discord }}",
+  {% endif %}
   "Password": "{{ eco_password }}",
   "ServerCategory": "{{ eco_category }}",
+  {% if eco_server_id != "" %}
+  "ID": "{{ eco_server_id }}",
+  {% endif %}
+  {% if eco_server_passport != "" %}
+  "Passport": "{{ eco_server_passport }}",
+  {% endif %}
   "IPAddress": "{{ eco_ip_address }}",
   "WebServerUrl": "{{ eco_web_url }}",
   "RemoteAddress": "{{ eco_remote_address }}",

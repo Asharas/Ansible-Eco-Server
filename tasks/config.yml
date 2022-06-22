@@ -15,6 +15,9 @@
     mode: '0644'
     force: false
 
+- name: Generate Network config
+  include_tasks: config_network.yml
+
 - name: Generate config
   include_tasks: config_subtask.yml
   loop: "{{ eco_generate_conf }}"
