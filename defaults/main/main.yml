@@ -19,3 +19,4 @@ eco_generate_conf:
   - Storage
   - Users
   - WorldGenerator
+  - WorldObjects
