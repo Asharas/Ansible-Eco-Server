@@ -18,6 +18,16 @@
 - name: Generate Network config
   include_tasks: config_network.yml
 
+- name: Template Maintenance config
+  template:
+    src: "Maintenance.eco.j2"
+    dest: "{{ eco_rootdir }}/Configs/Maintenance.eco"
+    owner: "{{ eco_user }}"
+    group: "{{ eco_group }}"
+    mode: '0644'
+    force: false
+  when: eco_autoshutdown_hour != -1
+
 - name: Generate config
   include_tasks: config_subtask.yml
   loop: "{{ eco_generate_conf }}"

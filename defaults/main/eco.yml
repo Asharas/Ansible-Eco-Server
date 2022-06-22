@@ -75,6 +75,12 @@ eco_storage_save_frequency: 60
 eco_storage_cleanup_on_exceptions: "false"
 eco_storage_db_queries_use_cache: "true"
 
+# Maintenance
+eco_autoshutdown_hour: -1
+eco_autoshutdown_reason: "Automatic Restart"
+eco_countdown_intervals: [60, 45, 30, 15, 5, 3, 1]
+eco_countdown_start: 30
+
 # Civics
 eco_overthrow: "true"
 eco_value_addition_overthrow: 50.0
