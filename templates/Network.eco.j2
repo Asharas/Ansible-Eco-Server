@@ -1,22 +1,16 @@
 {
-  "Description": "{{ eco_description }}",
-  "DetailedDescription": "{{ eco_detailed_desc }}",
   "PublicServer": {{ eco_is_public }},
   "Playtime": "{{ eco_playtime | join('') }}",
   {% if eco_discord != "" %}
   "DiscordAddress": "{{ eco_discord }}",
   {% endif %}
   "Password": "{{ eco_password }}",
+  "Description": "{{ eco_description }}",
+  "DetailedDescription": "{{ eco_detailed_desc }}",
   "ServerCategory": "{{ eco_category }}",
-  {% if eco_server_id != "" %}
-  "ID": "{{ eco_server_id }}",
-  {% endif %}
-  {% if eco_server_passport != "" %}
-  "Passport": "{{ eco_server_passport }}",
-  {% endif %}
   "IPAddress": "{{ eco_ip_address }}",
-  "WebServerUrl": "{{ eco_web_url }}",
   "RemoteAddress": "{{ eco_remote_address }}",
+  "WebServerUrl": "{{ eco_web_url }}",
   "GameServerPort": {{ eco_game_port }},
   "WebServerPort": {{ eco_web_port }},
   "RconServerPort": {{ eco_rcon_port }},
@@ -24,6 +18,12 @@
   "RconPassword": "{{ eco_rcon_password }}",
   "Rate": {{ eco_rate }},
   "MaxConnections": {{ eco_max_connections }},
+  {% if eco_server_id != "" %}
+  "ID": "{{ eco_server_id }}",
+  {% endif %}
+  {% if eco_server_passport != "" %}
+  "Passport": "{{ eco_server_passport }}",
+  {% endif %}
   "UPnPEnabled": {{ eco_upnp }},
   "RelayServerAddress": "{{ eco_relay }}"
 }

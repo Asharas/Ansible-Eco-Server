@@ -23,3 +23,4 @@
     state: link
     owner: root
     group: root
+  ignore_errors: "{{ ansible_check_mode }}"

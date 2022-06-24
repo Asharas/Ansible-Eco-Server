@@ -31,3 +31,4 @@
 - name: Generate config
   include_tasks: config_subtask.yml
   loop: "{{ eco_generate_conf }}"
+  when: not ansible_check_mode
