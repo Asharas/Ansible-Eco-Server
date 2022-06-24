@@ -11,5 +11,6 @@
   when: eco_iptables is defined and (eco_iptables | bool)
 
 - import_tasks: revproxy.yml
-  when: eco_revproxy is defined and (eco_revproxy | bool)
+  when: eco_revproxy is defined and (eco_revproxy | bool) or
+        eco_revproxy_tls is defined and (eco_revproxy_tls | bool)
   notify: Reload Nginx
