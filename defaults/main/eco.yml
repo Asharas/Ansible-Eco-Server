@@ -22,7 +22,7 @@ eco_rcon_port: 3002
 eco_rcon_password: ""
 eco_remote_address: "{{ eco_fqdn }}"
 eco_relay: ""
-eco_web_url: "{% if eco_fqdn != '' %}{{ 'https' if eco_revproxy_tls else 'http' }}://{{ eco_fqdn }}{% endif %}"
+eco_web_url: "{% if eco_remote_address != '' %}{{ 'https' if eco_revproxy_tls else 'http' }}://{{ eco_remote_address }}{% endif %}"
 eco_is_public: "false"
 eco_discord: ""
 eco_upnp: "true"
