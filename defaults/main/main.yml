@@ -8,6 +8,7 @@ eco_revproxy: false
 eco_revproxy_tls: false
 eco_revproxy_tls_crt: "/etc/letsencrypt/live/{{ eco_fqdn }}/fullchain.pem"
 eco_revproxy_tls_key: "/etc/letsencrypt/live/{{ eco_fqdn }}/privkey.pem"
+eco_skip_restart: false
 eco_generate_conf:
   - Backup
   - Balance
