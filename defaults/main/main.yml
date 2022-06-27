@@ -8,7 +8,8 @@ eco_revproxy: false
 eco_revproxy_tls: false
 eco_revproxy_tls_selfsigned: false
 eco_revproxy_tls_crt: "/etc/ssl/{{ eco_fqdn if eco_fqdn != '' else 'default' }}/cert.pem"
-eco_revproxy_tls_key: "/etc/ssl/{{ eco_fqdn if eco_fqdn != '' else 'default' }}/key.pem"
+eco_revproxy_tls_key: "{{ eco_revproxy_tls_crt | dirname }}/key.pem"
+eco_revproxy_tls_csr: "{{ eco_revproxy_tls_crt | dirname }}/csr.pem"
 eco_skip_restart: false
 eco_generate_conf:
   - Backup

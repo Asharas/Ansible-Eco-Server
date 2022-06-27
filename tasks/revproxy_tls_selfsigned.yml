@@ -24,9 +24,18 @@
     owner: root
     group: root
 
+- name: Generate CSR
+  openssl_csr:
+    path: "{{ eco_revproxy_tls_csr }}"
+    privatekey_path: "{{ eco_revproxy_tls_key }}"
+    common_name:
+      - "{{ eco_remote_address }}"
+
 - name: Generate TLS self-signed certificate
   openssl_certificate:
     provider: selfsigned
-    path: "{{ eco_revproxy_tls_crt }}"
+    csr_path: "{{ eco_revproxy_tls_csr }}"
     privatekey_path: "{{ eco_revproxy_tls_key }}"
+    path: "{{ eco_revproxy_tls_crt }}"
     state: present
+    selfsigned_not_after: +365d
