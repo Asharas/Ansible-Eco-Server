@@ -11,6 +11,15 @@
     mode: '0644'
     lstrip_blocks: yes
 
+- name: Generate TLS self-signed certificate
+  openssl_certificate:
+    provider: selfsigned
+    path: "{{ eco_revproxy_tls_crt }}"
+    privatekey_path: "{{ eco_revproxy_tls_key }}"
+    selfsigned_not_before: "{{ ansible_date_time['date'] }}"
+    state: present
+  when: eco_revproxy_tls_selfsigned
+
 - name: Disable the default site
   file:
     path: /etc/nginx/sites-enabled/default
