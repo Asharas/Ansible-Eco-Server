@@ -39,3 +39,4 @@
     path: "{{ eco_revproxy_tls_crt }}"
     state: present
     selfsigned_not_after: +365d
+  ignore_errors: "{{ ansible_check_mode }}"
