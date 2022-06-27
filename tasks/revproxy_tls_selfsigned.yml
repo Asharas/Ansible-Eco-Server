@@ -1,0 +1,32 @@
+---
+- name: Ensure pip3 in installed
+  package:
+    name: python3-pip
+    state: present
+
+- name: Install pyOpenssl library
+  pip:
+    name: pyopenssl
+    state: present
+
+- name: Create certificate directory
+  file:
+    path: "{{ eco_revproxy_tls_crt | dirname }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Generate TLS key
+  openssl_privatekey:
+    path: "{{ eco_revproxy_tls_key }}"
+    state: present
+    owner: root
+    group: root
+
+- name: Generate TLS self-signed certificate
+  openssl_certificate:
+    provider: selfsigned
+    path: "{{ eco_revproxy_tls_crt }}"
+    privatekey_path: "{{ eco_revproxy_tls_key }}"
+    state: present
