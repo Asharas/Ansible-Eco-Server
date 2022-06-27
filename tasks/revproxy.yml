@@ -12,7 +12,7 @@
   template:
     src: nginx.eco.conf.j2
     dest: /etc/nginx/sites-available/eco.conf
-    mode: '0644'
+    mode: 0644
     lstrip_blocks: yes
 
 - name: Disable the default site

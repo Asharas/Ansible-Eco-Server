@@ -22,5 +22,5 @@
     dest: "{{ eco_rootdir }}/Configs/Network.eco"
     owner: "{{ eco_user }}"
     group: "{{ eco_group }}"
-    mode: '0644'
+    mode: 0644
     lstrip_blocks: True

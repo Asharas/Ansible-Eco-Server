@@ -12,7 +12,7 @@
     dest: "{{ eco_rootdir }}/Configs/Pause.eco"
     owner: "{{ eco_user }}"
     group: "{{ eco_group }}"
-    mode: '0644'
+    mode: 0644
     force: false
 
 - name: Generate Network config
@@ -24,7 +24,7 @@
     dest: "{{ eco_rootdir }}/Configs/Maintenance.eco"
     owner: "{{ eco_user }}"
     group: "{{ eco_group }}"
-    mode: '0644'
+    mode: 0644
     force: false
   when: eco_autoshutdown_hour != -1
 

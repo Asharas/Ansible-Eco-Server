@@ -3,7 +3,7 @@
   template:
     src: eco.service.j2
     dest: /lib/systemd/system/eco.service
-    mode: '0644'
+    mode: 0644
 
 - name: Enable eco.service and reload daemon
   systemd:
