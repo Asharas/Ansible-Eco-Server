@@ -3,4 +3,4 @@
   become: yes
 
   roles:
-    - "../../ansible-eco-server"
+    - "../../ansible_eco_server"
