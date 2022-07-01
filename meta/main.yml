@@ -47,6 +47,14 @@ galaxy_info:
     # NOTE: A tag is limited to a single word comprised of alphanumeric characters.
     #       Maximum 20 tags per role.
 
-dependencies: []
+dependencies:
+  - role: geerlingguy.certbot
+    vars:
+      certbot_create_if_missing: true
+      certbot_certs:
+        - domains:
+          - "{{ eco_fqdn }}"
+    when: eco_certbot
+
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,
   # if you add dependencies to this list.
