@@ -62,7 +62,7 @@ You'll need a valid domain name for the certificate to be generated. Getting one
     certbot_admin_email: admin@example.com
 
   roles:
-    - role: ansible_eco_server
+    - role: eco_server
 ```
 
 For more configuration options check the roles's [sources on GitHub](https://github.com/geerlingguy/ansible-role-certbot).  
@@ -78,7 +78,7 @@ Example Playbook
   become: yes
 
   roles:
-    - role: ansible_eco_server
+    - role: eco_server
 ```  
 
 ##### Custom difficulty  
@@ -110,7 +110,7 @@ To set your own difficulty, override the eco_difficulty_presets
           spec_xp_per_level: 25.0
 
   roles:
-    - role: ansible_eco_server
+    - role: eco_server
 ```
 Notes
 -----
