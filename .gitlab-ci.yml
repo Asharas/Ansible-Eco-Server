@@ -1,10 +1,10 @@
 ---
 stages:
-  - linting
+  - lint
   - import
 
 lint:
-  stage: linting
+  stage: lint
   image: registry.gitlab.com/pipeline-components/ansible-lint:latest
   script:
     - ansible-lint --show-relpath .
