@@ -4,24 +4,24 @@
   when: eco_revproxy_tls_selfsigned
 
 - name: Install nginx
-  apt:
+  ansible.builtin.apt:
     name: nginx
     state: present
 
 - name: Template nginx conf for Eco
-  template:
+  ansible.builtin.template:
     src: nginx.eco.conf.j2
     dest: /etc/nginx/sites-available/eco.conf
     mode: 0644
-    lstrip_blocks: yes
+    lstrip_blocks: true
 
 - name: Disable the default site
-  file:
+  ansible.builtin.file:
     path: /etc/nginx/sites-enabled/default
     state: absent
 
 - name: Enable Eco conf
-  file:
+  ansible.builtin.file:
     path: /etc/nginx/sites-enabled/eco.conf
     src: /etc/nginx/sites-available/eco.conf
     state: link

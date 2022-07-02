@@ -1,16 +1,16 @@
 ---
 - name: Ensure pip3 in installed
-  package:
+  ansible.builtin.package:
     name: python3-pip
     state: present
 
 - name: Install pyOpenssl library
-  pip:
+  ansible.builtin.pip:
     name: pyopenssl
     state: present
 
 - name: Create certificate directory
-  file:
+  ansible.builtin.file:
     path: "{{ eco_revproxy_tls_crt | dirname }}"
     state: directory
     owner: root
@@ -18,21 +18,21 @@
     mode: 0755
 
 - name: Generate TLS key
-  openssl_privatekey:
+  community.crypto.openssl_privatekey:
     path: "{{ eco_revproxy_tls_key }}"
     state: present
     owner: root
     group: root
 
 - name: Generate CSR
-  openssl_csr:
+  community.crypto.openssl_csr:
     path: "{{ eco_revproxy_tls_csr }}"
     privatekey_path: "{{ eco_revproxy_tls_key }}"
     common_name:
       - "{{ eco_remote_address }}"
 
 - name: Generate TLS self-signed certificate
-  openssl_certificate:
+  community.crypto.openssl_certificate:
     provider: selfsigned
     csr_path: "{{ eco_revproxy_tls_csr }}"
     privatekey_path: "{{ eco_revproxy_tls_key }}"

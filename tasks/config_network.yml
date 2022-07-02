@@ -1,26 +1,26 @@
 ---
 - name: Check if Network.eco already exists
-  stat:
+  ansible.builtin.stat:
     path: "{{ eco_rootdir }}/Configs/Network.eco"
   register: network_file
 
 - name: Slurp Network.eco
-  slurp:
+  ansible.builtin.slurp:
     src: "{{ eco_rootdir }}/Configs/Network.eco"
   register: network_conf
   when: network_file.stat.exists
 
 - name: Set Network ID and Passport as facts
-  set_fact:
+  ansible.builtin.set_fact:
     eco_server_id: "{{ network_conf.content | b64decode | from_json | json_query('ID') }}"
     eco_server_passport: "{{ network_conf.content | b64decode | from_json | json_query('Passport') }}"
   when: network_file.stat.exists
 
 - name: Template Network.eco
-  template:
+  ansible.builtin.template:
     src: Network.eco.j2
     dest: "{{ eco_rootdir }}/Configs/Network.eco"
     owner: "{{ eco_user }}"
     group: "{{ eco_group }}"
     mode: 0644
-    lstrip_blocks: True
+    lstrip_blocks: true

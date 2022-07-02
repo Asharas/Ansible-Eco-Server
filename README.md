@@ -46,7 +46,7 @@ See also [Notes](#Notes) section.
 Dependencies
 ------------
 
-Certbot is enabled by setting `eco_revproxy_certbot: True` and needs `eco_fqdn` and `certbot_admin_email` for the certificate to be generated.  
+Certbot is enabled by setting `eco_revproxy_certbot: true` and needs `eco_fqdn` and `certbot_admin_email` for the certificate to be generated.  
 You'll need a valid domain name for the certificate to be generated. Getting one is beyond the scope of this document.
 
 ```yaml

@@ -1,6 +1,6 @@
 ---
 - name: Create conf dir if it doesn't exist
-  file:
+  ansible.builtin.file:
     path: "{{ eco_rootdir }}/Configs"
     state: directory
     owner: "{{ eco_user }}"
@@ -8,7 +8,7 @@
     mode: 0755
 
 - name: Create Pause conf if it doesn't exist
-  template:
+  ansible.builtin.template:
     src: "Pause.eco.j2"
     dest: "{{ eco_rootdir }}/Configs/Pause.eco"
     owner: "{{ eco_user }}"
@@ -20,7 +20,7 @@
   include_tasks: config_network.yml
 
 - name: Template Maintenance config
-  template:
+  ansible.builtin.template:
     src: "Maintenance.eco.j2"
     dest: "{{ eco_rootdir }}/Configs/Maintenance.eco"
     owner: "{{ eco_user }}"

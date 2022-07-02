@@ -1,13 +1,13 @@
 ---
 - name: Create eco.service file
-  template:
+  ansible.builtin.template:
     src: eco.service.j2
     dest: /lib/systemd/system/eco.service
     mode: 0644
 
 - name: Enable eco.service and reload daemon
-  systemd:
+  ansible.builtin.systemd:
     name: eco.service
-    enabled: yes
-    daemon-reload: yes
+    enabled: true
+    daemon-reload: true
   # timeout: 300
