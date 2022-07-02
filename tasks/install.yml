@@ -1,9 +1,9 @@
 ---
 - name: Add i386 architecture to dpkg
-  lineinfile:
+  ansible.builtin.lineinfile:
     line: "{{ item }}"
     path: /var/lib/dpkg/arch
-    create: yes
+    create: true
     owner: root
     group: root
     mode: 0644
@@ -12,17 +12,17 @@
     - i386
 
 - name: Enable contrib and non-free repos
-  replace:
+  ansible.builtin.replace:
     path: /etc/apt/sources.list
     regexp: 'main( contrib)?$'
     replace: 'main contrib non-free'
 
 - name: Update apt cache
-  apt:
-    update_cache: yes
+  ansible.builtin.apt:
+    update_cache: true
 
 - name: Preseed steamcmd install questions
-  debconf:
+  ansible.builtin.debconf:
     name: steamcmd
     question: "{{ item.question }}"
     vtype: "{{ item.vtype }}"
@@ -34,7 +34,7 @@
   notify: Restart Eco
 
 - name: Install packages
-  apt:
+  ansible.builtin.apt:
     state: present
     name:
       - libgdiplus
@@ -43,32 +43,31 @@
   notify: Restart Eco
 
 - name: Add Eco Server user
-  user:
+  ansible.builtin.user:
     name: "{{ eco_user }}"
     state: present
     shell: /bin/bash
     password: '!'
     update_password: on_create
-    password_lock: yes
+    password_lock: true
 
 - name: Create server directory
-  file:
+  ansible.builtin.file:
     path: "{{ eco_rootdir }}"
     state: directory
-    recurse: true
     owner: "{{ eco_user }}"
     group: "{{ eco_group }}"
     mode: 0755
 
 - name: Install/Update Steam client
-  command: /usr/games/steamcmd +quit
+  ansible.builtin.command: /usr/games/steamcmd +quit
   become_user: "{{ eco_user }}"
   register: steam_install
   changed_when: "'Update complete, launching' in steam_install.stdout"
   notify: Restart Eco
 
 - name: Install/Update Eco
-  command: /usr/games/steamcmd +force_install_dir {{ eco_rootdir }} +login anonymous +app_update 739590 default validate +quit
+  ansible.builtin.command: /usr/games/steamcmd +force_install_dir {{ eco_rootdir }} +login anonymous +app_update 739590 default validate +quit
   become_user: "{{ eco_user }}"
   register: eco_install
   changed_when: "'Update state (0x61) downloading' in eco_install.stdout"

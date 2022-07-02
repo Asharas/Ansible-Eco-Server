@@ -30,7 +30,7 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-        - 11
+        - bullseye
   # - name: Fedora
   #   versions:
   #   - all
@@ -56,7 +56,7 @@ dependencies:
       certbot_create_if_missing: true
       certbot_certs:
         - domains:
-          - "{{ eco_fqdn }}"
+            - "{{ eco_fqdn }}"
     when: eco_revproxy_certbot
 
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,

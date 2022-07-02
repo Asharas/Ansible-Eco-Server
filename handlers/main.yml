@@ -1,13 +1,13 @@
 ---
 - name: Restart Eco
-  service:
+  ansible.builtin.service:
     name: eco.service
     state: restarted
   when: not eco_skip_restart
   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Reload Nginx
-  service:
+  ansible.builtin.service:
     name: nginx.service
     state: reloaded
   ignore_errors: "{{ ansible_check_mode }}"

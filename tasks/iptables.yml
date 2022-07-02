@@ -1,25 +1,25 @@
 ---
 - name: Install required packages
-  apt:
+  ansible.builtin.apt:
     name: iptables
     state: present
 
 - name: Accept Established and Related connexions
-  iptables:
+  ansible.builtin.iptables:
     state: present
     chain: INPUT
     ctstate: ESTABLISHED,RELATED
     jump: ACCEPT
 
 - name: Accept all traffic on loopback
-  iptables:
+  ansible.builtin.iptables:
     state: present
     chain: INPUT
     in_interface: lo
     jump: ACCEPT
 
 - name: Allow SSH
-  iptables:
+  ansible.builtin.iptables:
     state: present
     chain: INPUT
     protocol: tcp
@@ -27,7 +27,7 @@
     jump: ACCEPT
 
 - name: Nginx iptables HTTP rule
-  iptables:
+  ansible.builtin.iptables:
     state: present
     chain: INPUT
     protocol: tcp
@@ -37,7 +37,7 @@
         eco_revproxy_tls is defined and (eco_revproxy_tls | bool)
 
 - name: Nginx iptables HTTPS rule
-  iptables:
+  ansible.builtin.iptables:
     state: present
     chain: INPUT
     protocol: tcp
@@ -46,7 +46,7 @@
   when: eco_revproxy_tls is defined and (eco_revproxy_tls | bool)
 
 - name: Eco web iptables rule
-  iptables:
+  ansible.builtin.iptables:
     state: present
     chain: INPUT
     protocol: tcp
@@ -57,7 +57,7 @@
     - eco_revproxy_tls is undefined or not (eco_revproxy_tls | bool)
 
 - name: Eco gameserver iptables rules
-  iptables:
+  ansible.builtin.iptables:
     state: present
     chain: INPUT
     protocol: "{{ item }}"
@@ -68,7 +68,7 @@
     - udp
 
 - name: Set INPUT and FORWARD chain policy
-  iptables:
+  ansible.builtin.iptables:
     state: present
     chain: "{{ item }}"
     policy: DROP
