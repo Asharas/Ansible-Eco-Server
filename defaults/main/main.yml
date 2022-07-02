@@ -1,25 +1,8 @@
 ---
 eco_fqdn: ""
-eco_user: eco
-eco_group: "{{ eco_user }}"
-eco_rootdir: /opt/eco
 eco_iptables: false
 eco_revproxy: false
 eco_revproxy_tls: false
 eco_revproxy_tls_selfsigned: false
-eco_certbot: false
-eco_revproxy_tls_crt: "/etc/{{ 'letsencrypt/live' if eco_certbot else 'ssl' }}/{{ eco_fqdn if eco_fqdn != '' else 'default' }}/fullchain.pem"
-eco_revproxy_tls_key: "{{ eco_revproxy_tls_crt | dirname }}/privkey.pem"
-eco_revproxy_tls_csr: "{{ eco_revproxy_tls_crt | dirname }}/csr.pem"
+eco_revproxy_certbot: false
 eco_skip_restart: false
-eco_generate_conf:
-  - Backup
-  - Balance
-  - Civics
-  - Difficulty
-  - Disasters
-  - Features
-  - Localization
-  - Storage
-  - Users
-  - WorldGenerator
