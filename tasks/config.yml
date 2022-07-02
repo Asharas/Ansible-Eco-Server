@@ -5,6 +5,7 @@
     state: directory
     owner: "{{ eco_user }}"
     group: "{{ eco_group }}"
+    mode: 0755
 
 - name: Create Pause conf if it doesn't exist
   template:
