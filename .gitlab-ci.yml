@@ -1,9 +1,20 @@
 ---
 stages:
   - linting
+  - import
 
 lint:
   stage: linting
   image: registry.gitlab.com/pipeline-components/ansible-lint:latest
   script:
     - ansible-lint --show-relpath .
+
+import:
+  stage: import
+  image: debian:bullseye-slim
+  script:
+    - apt-get update -qq
+    - apt-get install -qq ansible
+    - ansible-galaxy role import --api-key $GALAXY_API_KEY Asharas Eco-Server
+  only:
+    - main
