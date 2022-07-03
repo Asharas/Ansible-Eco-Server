@@ -32,6 +32,7 @@ Role specific variables.
 | eco_revproxy_tls | Enable nginx tls config | `false` |
 | eco_revproxy_tls_selfsigned | Generate a self-signed X509 certificate | `false` |
 | eco_revproxy_certbot | Enable use of [ansible-role-certbot](https://galaxy.ansible.com/geerlingguy/certbot), see [Dependencies](#Dependencies) | `false` |
+| eco_revproxy_discord_redirect | Add a redirection `/discord` to Discord server URL | `false` |
 | eco_skip_restart | Do not restart the server after playing the role even if changes occur | `false` |  
 
 ##### [default/main/eco.yml](default/main/eco.yml)
@@ -130,12 +131,11 @@ This is because the game server has a static ordering of JSON objects that it ov
 `Network.eco` as already been refactored to avoid this but not sure it'll be doable for every config file, especially `WorldGenerator.eco` which is massive.
 
 ###### Upcoming or considered features  
-- [ ] Set a webpath /discord so that `eco.example.com/discord` redirects to the Discord URL  
 
-- [ ] Re-add mods support and more mods:  
-  - [ ] Discord Link](https://github.com/Eco-DiscordLink/EcoDiscordPlugin)  
-  - [ ] Big Shovel](https://eco.mod.io/big-shovel)
-  - [ ] Colored Vehicules](https://eco.mod.io/colored-vehicles)  
+- Re-add mods support and more mods:  
+  - Discord Link](https://github.com/Eco-DiscordLink/EcoDiscordPlugin)  
+  - Big Shovel](https://eco.mod.io/big-shovel)
+  - Colored Vehicules](https://eco.mod.io/colored-vehicles)  
 
 License
 -------

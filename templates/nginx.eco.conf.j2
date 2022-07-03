@@ -18,6 +18,11 @@ server {
         proxy_set_header  X-Forwarded-Proto $scheme;
         proxy_pass        http://backend_eco;
     }
+    {% if eco_revproxy_discord_redirect | bool and eco_discord != '' %}
+    location /discord {
+      return      302 {{ eco_discord }};
+    }
+    {% endif %}
     {% endif %}
 }
 
@@ -40,5 +45,10 @@ server {
         proxy_set_header  X-Forwarded-Proto $scheme;
         proxy_pass        http://backend_eco;
     }
+    {% if eco_revproxy_discord_redirect | bool and eco_discord != '' %}
+    location /discord {
+      return      302 {{ eco_discord }};
+    }
+    {% endif %}
 }
 {% endif %}

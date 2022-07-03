@@ -5,4 +5,5 @@ eco_revproxy: false
 eco_revproxy_tls: false
 eco_revproxy_tls_selfsigned: false
 eco_revproxy_certbot: false
+eco_revproxy_discord_redirect: false
 eco_skip_restart: false
