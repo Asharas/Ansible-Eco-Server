@@ -11,10 +11,8 @@ lint:
 
 import:
   stage: import
-  image: debian:bullseye-slim
+  image: registry.gitlab.com/asharas/ansible-docker:latest
   script:
-    - apt-get update -qq
-    - apt-get install -qq ansible
     - ansible-galaxy role import --api-key $GALAXY_API_KEY Asharas Eco-Server
   only:
     - main
