@@ -40,7 +40,8 @@ Those are too numerous to detail and doing so would be redundant. Take a look at
 
 Quick note on `eco_remote_address` and `eco_web_url`: the former gets assigned `eco_fqdn` value and the latter is templated depending on whether TLS is enabled or not. Both should be left as is.
 
-See also [Notes](#Notes) section.
+##### [vars/main.yml](vars/main.yml)  
+Both role and game variables that most installs don't need modified.  
 
 
 Dependencies
