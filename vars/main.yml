@@ -3,9 +3,9 @@
 eco_user: eco
 eco_group: "{{ eco_user }}"
 eco_rootdir: /opt/eco
-eco_revproxy_tls_crt: "/etc/{{ 'letsencrypt/live' if eco_revproxy_certbot else 'ssl' }}/{{ eco_fqdn if eco_fqdn != '' else 'default' }}/fullchain.pem"
-eco_revproxy_tls_key: "{{ eco_revproxy_tls_crt | dirname }}/privkey.pem"
-eco_revproxy_tls_csr: "{{ eco_revproxy_tls_crt | dirname }}/csr.pem"
+eco_rp_tls_crt: "/etc/{{ 'letsencrypt/live' if eco_rp_certbot else 'ssl' }}/{{ eco_fqdn if eco_fqdn != '' else 'default' }}/fullchain.pem"
+eco_rp_tls_key: "{{ eco_rp_tls_crt | dirname }}/privkey.pem"
+eco_rp_tls_csr: "{{ eco_rp_tls_crt | dirname }}/csr.pem"
 eco_generate_conf:
   - Backup
   - Balance

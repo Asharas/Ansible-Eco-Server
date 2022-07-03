@@ -33,8 +33,8 @@
     protocol: tcp
     destination_port: 80
     jump: ACCEPT
-  when: eco_revproxy is defined and (eco_revproxy | bool) or
-        eco_revproxy_tls is defined and (eco_revproxy_tls | bool)
+  when: eco_rp is defined and (eco_rp | bool) or
+        eco_rp_tls is defined and (eco_rp_tls | bool)
 
 - name: Nginx iptables HTTPS rule
   ansible.builtin.iptables:
@@ -43,7 +43,7 @@
     protocol: tcp
     destination_port: 443
     jump: ACCEPT
-  when: eco_revproxy_tls is defined and (eco_revproxy_tls | bool)
+  when: eco_rp_tls is defined and (eco_rp_tls | bool)
 
 - name: Eco web iptables rule
   ansible.builtin.iptables:
@@ -53,8 +53,8 @@
     destination_port: "{{ eco_web_port }}"
     jump: ACCEPT
   when:
-    - eco_revproxy is undefined or not (eco_revproxy | bool)
-    - eco_revproxy_tls is undefined or not (eco_revproxy_tls | bool)
+    - eco_rp is undefined or not (eco_rp | bool)
+    - eco_rp_tls is undefined or not (eco_rp_tls | bool)
 
 - name: Eco gameserver iptables rules
   ansible.builtin.iptables:

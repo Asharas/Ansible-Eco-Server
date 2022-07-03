@@ -28,11 +28,11 @@ Role specific variables.
 | --- | --- | --- |
 | eco_fqdn | Eco server Fully Qualified Domain Name | `''` |
 | eco_iptables | Set iptables rules | `false` |
-| eco_revproxy | Enable nginx as reverse proxy | `false` |
-| eco_revproxy_tls | Enable nginx tls config | `false` |
-| eco_revproxy_tls_selfsigned | Generate a self-signed X509 certificate | `false` |
-| eco_revproxy_certbot | Enable use of [ansible-role-certbot](https://galaxy.ansible.com/geerlingguy/certbot), see [Dependencies](#Dependencies) | `false` |
-| eco_revproxy_discord_redirect | Add a redirection `/discord` to Discord server URL | `false` |
+| eco_rp | Enable nginx as reverse proxy | `false` |
+| eco_rp_tls | Enable nginx tls config | `false` |
+| eco_rp_tls_selfsigned | Generate a self-signed X509 certificate | `false` |
+| eco_rp_certbot | Enable use of [ansible-role-certbot](https://galaxy.ansible.com/geerlingguy/certbot), see [Dependencies](#Dependencies) | `false` |
+| eco_rp_discord_redirect | Add a redirection `/discord` to Discord server URL | `false` |
 | eco_skip_restart | Do not restart the server after playing the role even if changes occur | `false` |  
 
 ##### [default/main/eco.yml](default/main/eco.yml)
@@ -48,7 +48,7 @@ Both role and game variables that most installs don't need modified.
 Dependencies
 ------------
 
-Certbot is enabled by setting `eco_revproxy_certbot: true` and needs `eco_fqdn` and `certbot_admin_email` for the certificate to be generated.  
+Certbot is enabled by setting `eco_rp_certbot: true` and needs `eco_fqdn` and `certbot_admin_email` for the certificate to be generated.  
 You'll need a valid domain name for the certificate to be generated. Getting one is beyond the scope of this document.
 
 ```yaml

@@ -1,7 +1,7 @@
 ---
 - name: Generate self-signed certificate
   include_tasks: revproxy_tls_selfsigned.yml
-  when: eco_revproxy_tls_selfsigned
+  when: eco_rp_tls_selfsigned
 
 - name: Install nginx
   ansible.builtin.apt:

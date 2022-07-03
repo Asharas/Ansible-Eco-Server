@@ -1,9 +1,9 @@
 ---
 eco_fqdn: ""
 eco_iptables: false
-eco_revproxy: false
-eco_revproxy_tls: false
-eco_revproxy_tls_selfsigned: false
-eco_revproxy_certbot: false
-eco_revproxy_discord_redirect: false
+eco_rp: false
+eco_rp_tls: false
+eco_rp_tls_selfsigned: false
+eco_rp_certbot: false
+eco_rp_discord_redirect: false
 eco_skip_restart: false

@@ -11,7 +11,7 @@
 
 - name: Create certificate directory
   ansible.builtin.file:
-    path: "{{ eco_revproxy_tls_crt | dirname }}"
+    path: "{{ eco_rp_tls_crt | dirname }}"
     state: directory
     owner: root
     group: root
@@ -19,24 +19,24 @@
 
 - name: Generate TLS key
   community.crypto.openssl_privatekey:
-    path: "{{ eco_revproxy_tls_key }}"
+    path: "{{ eco_rp_tls_key }}"
     state: present
     owner: root
     group: root
 
 - name: Generate CSR
   community.crypto.openssl_csr:
-    path: "{{ eco_revproxy_tls_csr }}"
-    privatekey_path: "{{ eco_revproxy_tls_key }}"
+    path: "{{ eco_rp_tls_csr }}"
+    privatekey_path: "{{ eco_rp_tls_key }}"
     common_name:
       - "{{ eco_remote_address }}"
 
 - name: Generate TLS self-signed certificate
   community.crypto.openssl_certificate:
     provider: selfsigned
-    csr_path: "{{ eco_revproxy_tls_csr }}"
-    privatekey_path: "{{ eco_revproxy_tls_key }}"
-    path: "{{ eco_revproxy_tls_crt }}"
+    csr_path: "{{ eco_rp_tls_csr }}"
+    privatekey_path: "{{ eco_rp_tls_key }}"
+    path: "{{ eco_rp_tls_crt }}"
     state: present
     selfsigned_not_after: +365d
   ignore_errors: "{{ ansible_check_mode }}"
