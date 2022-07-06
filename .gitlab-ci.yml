@@ -13,6 +13,7 @@ publish:
   stage: publish
   image: registry.gitlab.com/asharas/ansible-docker:latest
   script:
-    - ansible-galaxy role import --api-key $GALAXY_API_KEY Asharas Eco-Server
+    - ansible-galaxy role import --role-name eco_server --api-key $GALAXY_API_KEY Asharas Eco-Server
   only:
     - main
+    - CI
